@@ -1,0 +1,61 @@
+﻿<Window x:Class="WeatherApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherApp" d:DataContext="{d:DesignInstance Type=local:ViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="250" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style x:Key="TextBlockInfo">
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontWeight" Value="Thin"/>
+            <Setter Property="TextBlock.Foreground" Value="#e0e0e0"/>
+        </Style>
+
+        <Style x:Key="TextBlockButton">
+            <Setter Property="TextBlock.FontWeight" Value="Thin"/>
+            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+            <Setter Property="TextBlock.FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="20 5 20 5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#64b5f6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="235"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="Temperature" DataContext="{Binding Weather}" Style="{StaticResource TextBlockInfo}" Grid.Column="1" Grid.Row="1" FontSize="35" Text="{Binding Main.Temp, UpdateSourceTrigger=PropertyChanged, IsAsync=True, FallbackValue='--°С'}"></TextBlock>
+        <TextBlock x:Name="CityName" DataContext="{Binding Weather}" Style="{StaticResource TextBlockInfo}" Grid.Column="1" Grid.Row="2" FontSize="20" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, IsAsync=True, FallbackValue='?????'}"></TextBlock>
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Margin="20 5 20 5" BorderThickness="0" Command="{Binding Berdsk}">
+                <TextBlock Text="Berdsk" Style="{StaticResource TextBlockButton}"></TextBlock>
+            </Button>
+            <Button Grid.Column="1" Margin="20 5 20 5" BorderThickness="0" Command="{Binding Novosibirsk}">
+                <TextBlock Text="Novosibirsk" Style="{StaticResource TextBlockButton}"></TextBlock>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
