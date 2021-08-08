@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace WeatherApp
 {
-    public class NovosibirskCmd : ICommand
+    public class Command : ICommand
     {
         private Action<object> execute;
         private Func<object, bool> canExecute;
@@ -16,7 +14,7 @@ namespace WeatherApp
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public NovosibirskCmd(Action<object> execute, Func<object, bool> canExecute = null)
+        public Command(Action<object> execute, Func<object, bool> canExecute = null)
         {
             this.execute = execute;
             this.canExecute = canExecute;

@@ -20,14 +20,14 @@ namespace WeatherApp
             }
         }
 
-        private BerdskCmd berdsk;
+        private Command berdsk;
 
-        public BerdskCmd Berdsk
+        public Command Berdsk
         {
             get
             {
                 return berdsk ??
-                    (berdsk = new BerdskCmd(obj =>
+                    (berdsk = new Command(obj =>
                     {
                         url = "https://api.openweathermap.org/data/2.5/weather?q=Berdsk&units=metric&appid=777c0b35616a7832e4d103e06717114c";
                         GetWeatherInfoAsync();
@@ -35,14 +35,14 @@ namespace WeatherApp
             }
         }
 
-        private NovosibirskCmd novosibirsk;
+        private Command novosibirsk;
 
-        public NovosibirskCmd Novosibirsk
+        public Command Novosibirsk
         {
             get
             {
                 return novosibirsk ??
-                    (novosibirsk = new NovosibirskCmd(obj =>
+                    (novosibirsk = new Command(obj =>
                     {
                         url = "https://api.openweathermap.org/data/2.5/weather?q=Novosibirsk&units=metric&appid=777c0b35616a7832e4d103e06717114c";
                         GetWeatherInfoAsync();
